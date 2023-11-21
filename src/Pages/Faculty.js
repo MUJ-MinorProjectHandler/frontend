@@ -201,14 +201,19 @@ const findnum = async ()=>{
               className="my-2 studentlist d-flex justify-content-center"
             >
               <ListGroup.Item
-                style={{ width: "50%", backgroundColor: "#bad9c2" }}
+                style={{ width: "40%", backgroundColor: "#bad9c2" }}
               >
                 {selectedstudents.name}
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "50%", backgroundColor: "#bad9c2" }}
+                style={{ width: "40%", backgroundColor: "#bad9c2" }}
               >
                 {selectedstudents.registration_number}
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{ width: "20%", backgroundColor: "#bad9c2" }}
+              >
+                {selectedstudents.phone_number}
               </ListGroup.Item>
               {/* <ListGroup.Item
                 style={{ width: "10%", backgroundColor: "#bad9c2" }}
@@ -236,8 +241,11 @@ const findnum = async ()=>{
                       <ListGroup.Item style={{ width: "30%" }}>
                         {students.name}
                       </ListGroup.Item>
-                      <ListGroup.Item style={{ width: "50%" }}>
+                      <ListGroup.Item style={{ width: "30%" }}>
                         {students.registration_number}
+                      </ListGroup.Item>
+                      <ListGroup.Item style={{ width: "20%" }}>
+                        {students.phone_number}
                       </ListGroup.Item>
                       <ListGroup.Item style={{ width: "10%" }}>
                         <button
