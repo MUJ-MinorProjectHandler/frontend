@@ -29,14 +29,17 @@ const HeaderLoginStudent = () => {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          <Navbar.Text className="justify-content-end">
+          <Navbar.Text className="justify-content-end d-none d-sm-block">
             Signed in as: {sessionStorage.getItem("email")}
           </Navbar.Text>
-          <button className="lout" onClick={logout}>
+          <button className="lout  flex" onClick={logout}>
             Logout
           </button>
         </Container>
       </Navbar>
+      <p className="justify-content-end d-block d-sm-none text-center text-opacity-75">
+            Signed in as: {sessionStorage.getItem("email")}
+          </p>
     </>
   );
 };
