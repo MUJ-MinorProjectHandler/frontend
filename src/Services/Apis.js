@@ -32,8 +32,12 @@ export const setMaximum = async(data)=>{
     return await commonrequest("POST", `${BACKEND_URL}/admin/setmaxnum`, data)
 }
 
-export const datadown = async()=>{
-    return await commonrequest("GET", `${BACKEND_URL}/admin/download`,"")
+export const datadownstudent = async()=>{
+    return await commonrequest("GET", `${BACKEND_URL}/admin/downloadstudent`,"")
+}
+
+export const datadownfaculty = async()=>{
+    return await commonrequest("GET", `${BACKEND_URL}/admin/downloadfaculty`,"")
 }
 
 export const getFullList = async (search, page)=>{
