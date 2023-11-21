@@ -4,7 +4,8 @@ import axios from "axios";
 import {
   findMaximum,
   setMaximum,
-  datadown,
+  datastudent,
+  datadownfaculty,
   getFullList,
   rejectAdminStudent,
 } from "../Services/Apis";
@@ -78,8 +79,18 @@ const Admin = () => {
     // console.log(response);
   };
 
-  const sheetdown = async () => {
-    const response = await datadown();
+  const sheetdownstudent = async () => {
+    const response = await datadownstudent();
+    console.log(response);
+    if (response.status === 200) {
+      window.open(response.data.downloadUrl, "blank");
+    } else {
+      toast.error("Error!Please try after sometime");
+    }
+  };
+
+  const sheetdownfaculty = async () => {
+    const response = await datadownfaculty();
     console.log(response);
     if (response.status === 200) {
       window.open(response.data.downloadUrl, "blank");
@@ -209,10 +220,10 @@ const Admin = () => {
       {/* <section> */}
       <div className="container text-center">
         <div className="row" style={{ marginTop: "2rem" }}>
-          <div className="col-sm-5">
+          <div className="col-sm-4">
             <div className="row">
               <h6>Upload file to add Students</h6>
-              <div className="col-sm-8">
+              <div className="col-sm-7">
                 <Form.Group
                   controlId="formFile"
                   className="mb-3"
@@ -227,7 +238,7 @@ const Admin = () => {
                   />
                 </Form.Group>
               </div>
-              <div className="col-sm-4">
+              <div className="col-sm-5">
                 <button
                   className="upload"
                   style={{ fontSize: "15px" }}
@@ -238,10 +249,10 @@ const Admin = () => {
               </div>
             </div>
           </div>
-          <div className="col-sm-5">
+          <div className="col-sm-4">
             <div className="row">
               <h6>Upload file to add Faculties</h6>
-              <div className="col-sm-8">
+              <div className="col-sm-7">
                 <Form.Group
                   controlId="formFile"
                   className="mb-3"
@@ -256,7 +267,7 @@ const Admin = () => {
                   />
                 </Form.Group>
               </div>
-              <div className="col-sm-4">
+              <div className="col-sm-5">
                 <button
                   className="upload"
                   style={{ fontSize: "15px" }}
@@ -273,9 +284,23 @@ const Admin = () => {
                 type="button"
                 class="btn btn-success"
                 className="downsheet"
-                onClick={sheetdown}
+                onClick={sheetdownstudent}
+                style={{fontSize:"15px"}}
               >
-                Download Sheet
+                Download Student Sheet
+              </button>
+            </div>
+          </div>
+          <div className="col-sm-2">
+            <div>
+              <button
+                type="button"
+                class="btn btn-success"
+                className="downsheet"
+                onClick={sheetdownfaculty}
+                style={{fontSize:"15px"}}
+              >
+                Download Faculty Sheet
               </button>
             </div>
           </div>
@@ -345,6 +370,7 @@ const Admin = () => {
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Registration No.</th>
+                <th scope="col">Phone No.</th>
                 <th scope="col">Faculty Name</th>
                 <th scope="col">Faculty Email</th>
                 <th scope="col">Status</th>
@@ -354,10 +380,11 @@ const Admin = () => {
             {students?.map((Student, index) => (
               <MDBTableBody>
                 <tr>
-                  <th scope="row">{(++index)+((page-1)*20)}</th>
+                  <th scope="row">{(++index)+((page-1)*50)}</th>
                   <td>{Student.name}</td>
                   <td>{Student.email}</td>
                   <td>{Student.registration_number}</td>
+                  <td>{Student.phone_number}</td>
                   {/* {Student.status === "pending" ? (
                     <td>hello</td>
                   ) : (
