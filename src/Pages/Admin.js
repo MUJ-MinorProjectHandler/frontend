@@ -4,7 +4,7 @@ import axios from "axios";
 import {
   findMaximum,
   setMaximum,
-  datastudent,
+  datadownstudent,
   datadownfaculty,
   getFullList,
   rejectAdminStudent,
