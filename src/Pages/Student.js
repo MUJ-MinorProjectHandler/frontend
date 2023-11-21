@@ -115,7 +115,7 @@ const Student = () => {
           <HeaderLoginStudent></HeaderLoginStudent>
           <>
             <h3 className="studentheading">
-              Click Twice on the request button who you want to work under
+              Click on the request button who you want to work under
             </h3>
             <div className="container-fluid">
               {facInfo?.map((FACULTY1) => (
@@ -125,9 +125,9 @@ const Student = () => {
                   className="my-2 studentlist d-flex justify-content-center"
                 >
                   <ListGroup.Item>{++index}</ListGroup.Item>
-                  <ListGroup.Item style={{width:"30%"}}>{FACULTY1.name}</ListGroup.Item>
-                  <ListGroup.Item style={{width:"30%"}}>{FACULTY1.email}</ListGroup.Item>
-                  <ListGroup.Item style={{width:"10%"}}>
+                  <ListGroup.Item>{FACULTY1.name}</ListGroup.Item>
+                  <ListGroup.Item>{FACULTY1.email}</ListGroup.Item>
+                  <ListGroup.Item>
                   {FACULTY1.description_link==="_description_link_"?<p style={{marginBottom:"0rem"}}>No Link</p>:
                     <a href={FACULTY1.description_link} target="_blank" rel="noreferrer">Link</a>}
                   </ListGroup.Item>
