@@ -365,20 +365,6 @@ const Admin = () => {
             </div>
           </div>
           <div className="col col-lg-8 search">
-            <Form className="">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2 searchhe"
-                aria-label="Search"
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              {/* <button className="searchbtn">Search</button> */}
-            </Form>
-          </div>
-        </div>
-        <div className="row" style={{ marginTop: "3rem", marginBottom:"3rem"}}>
-          <div className="col">
             <Form.Group>
                   <Form.Label>
                     Insert a <strong>Public Drive Link</strong> containing the
@@ -405,6 +391,20 @@ const Admin = () => {
                     </div>
                   </div>
               </Form.Group>
+          </div>
+        </div>
+        <div className="row" style={{ marginTop: "3rem", marginBottom:"3rem"}}>
+          <div className="col">
+            <Form className="">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2 searchhe"
+                aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              {/* <button className="searchbtn">Search</button> */}
+            </Form>
            </div>
         </div>
       </div>
