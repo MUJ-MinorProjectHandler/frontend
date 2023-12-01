@@ -105,3 +105,7 @@ export const generateRequest = async(data)=>{
 export const studentStatus = async()=>{
     return await commonrequest("GET", `${BACKEND_URL}/student/`+sessionStorage.getItem("email"))
 }
+
+export const getLink = async()=>{
+    return await commonrequest("GET", `${BACKEND_URL}/getproblemstatement`)
+}
