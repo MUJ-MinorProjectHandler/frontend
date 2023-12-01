@@ -7,6 +7,7 @@ import {
   generateRequest,
   studentStatus,
   getLink,
+  findMaxNum,
 } from "../Services/Apis";
 import { confirmAlert } from "react-confirm-alert";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -15,12 +16,19 @@ import "bootstrap";
 import "../styles/mix.css";
 
 const Student = () => {
+  const [maxStudent,setMaxStudent] = useState();
   const [stuInfo, setStuInfo] = useState();
   const [facInfo, setFacInfo] = useState();
   const [facFullInfo, setFacFullInfo] = useState();
   const [link,setLink] = useState();
   const navigate = useNavigate();
   let index=0;
+
+  const findMax = async ()=>{
+    const response = await findMaxNum();
+    sessionStorage.setItem("max", response.data);
+    setMaxStudent(response.data);
+  }
 
   const sendRequest = async (data) => {
     const Data = {
@@ -101,6 +109,7 @@ const Student = () => {
     getProblemStatements();
     facinfo();
     facfullinfo();
+    findMax();
     
     if(sessionStorage.userdbtoken==="qswteurdteynut"){}
     else{
@@ -148,10 +157,7 @@ const Student = () => {
                   <ListGroup.Item>{++index}</ListGroup.Item>
                   <ListGroup.Item>{FACULTY1.name}</ListGroup.Item>
                   <ListGroup.Item>{FACULTY1.email}</ListGroup.Item>
-                  <ListGroup.Item>
-                  {FACULTY1.description_link==="_description_link_"?<p style={{marginBottom:"0rem"}}>No Link</p>:
-                    <a href={FACULTY1.description_link} target="_blank" rel="noreferrer">Link</a>}
-                  </ListGroup.Item>
+                  <ListGroup.Item>{FACULTY1.noOfStudent}/{maxStudent}</ListGroup.Item>
                   <ListGroup.Item>
                     <button className="requestbtn" onClick={() => sendRequest(FACULTY1)}>
                       Request
