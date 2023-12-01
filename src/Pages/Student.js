@@ -127,16 +127,16 @@ const Student = () => {
               Click on the request button who you want to work under
             </h3> */}
             <div className="text-center" style={{ marginBottom:"3rem"}}>
+            <a target="_blank" href={link} rel="noreferrer">
             <button
                 type="button"
                 class="btn btn-success"
                 className="downsheet"
-                target="_blank"
-                href={link}
                 style={{fontSize:"15px"}}
               >
                 View Problem Statements
               </button>
+              </a>
               </div>
             <div className="container-fluid">
               {facInfo?.map((FACULTY1) => (
