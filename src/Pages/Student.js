@@ -115,8 +115,11 @@ const Student = () => {
           <HeaderLoginStudent></HeaderLoginStudent>
           <>
             <h3 className="studentheading">
-              Click on the request button who you want to work under
+              ** First have a conversation with respective faculty. Since, student can request only 1 faculty at a time.
             </h3>
+            {/* <h3 className="studentheading">
+              Click on the request button who you want to work under
+            </h3> */}
             <div className="container-fluid">
               {facInfo?.map((FACULTY1) => (
                 <ListGroup
