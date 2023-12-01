@@ -109,7 +109,7 @@ const Student = () => {
     getProblemStatements();
     facinfo();
     facfullinfo();
-    findMax();
+    
     
     if(sessionStorage.userdbtoken==="qswteurdteynut"){}
     else{
@@ -119,7 +119,7 @@ const Student = () => {
   }, []);
 
   useEffect(()=>{
-    
+    findMax();
     checkStatus();
   })
 
