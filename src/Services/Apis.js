@@ -44,6 +44,9 @@ export const getFullList = async (search, page)=>{
     return await commonrequest("GET", `${BACKEND_URL}/admin/fulllist?search=${search}&page=${page}`,"");
 }
 
+export const sendDescriptionLink = async(data)=>{
+    return await commonrequest("POST", `${BACKEND_URL}/admin/setlink`, data)
+}
 
 //faculty
 
@@ -59,9 +62,9 @@ export const findNum = async()=>{
 
 }
 
-export const sendDescriptionLink = async(data)=>{
-    return await commonrequest("POST", `${BACKEND_URL}/faculty/setlink/`+sessionStorage.getItem("email"), data)
-}
+// export const sendDescriptionLink = async(data)=>{
+//     return await commonrequest("POST", `${BACKEND_URL}/faculty/setlink/`+sessionStorage.getItem("email"), data)
+// }
 
 export const reqStudents = async()=>{
     return await commonrequest("GET", `${BACKEND_URL}/faculty/reqstu/`+sessionStorage.getItem("email"))
