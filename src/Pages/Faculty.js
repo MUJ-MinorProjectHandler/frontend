@@ -146,7 +146,7 @@ const findnum = async ()=>{
         <div className="container text-center">
           <div className="row">
             <div className="col">
-              <Form.Group>
+              {/* <Form.Group>
                 <Form.Label>
                   Insert a <strong>Public Drive Link</strong> containing the
                   Project Description
@@ -171,7 +171,7 @@ const findnum = async ()=>{
                     </button>
                   </div>
                 </div>
-              </Form.Group>
+              </Form.Group> */}
             </div>
             {/* <div>
               {noOfStudents} / {maxStudent}
