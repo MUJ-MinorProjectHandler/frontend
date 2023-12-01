@@ -16,6 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Dropdown from 'react-bootstrap/Dropdown';
 import "bootstrap";
 import "../styles/mix.css";
 
@@ -30,6 +31,8 @@ const Faculty = () => {
   const [descriptionLinkButton, setDescriptionLinkButton] = useState(true);
   const navigate = useNavigate();
   const [setPage, setSetPage] = useState(true);
+  const [category,setCategory] = useState();
+  const [acceptButton,setAcceptButton] = useState(true);
 
   const findMax = async ()=>{
     const response = await findMaxNum();
@@ -91,6 +94,7 @@ const findnum = async ()=>{
     const Data = {
       email: data,
       facultyemail: sessionStorage.getItem("email"),
+      category: category,
     };
     acceptStudent(Data);
   };
@@ -116,6 +120,22 @@ const findnum = async ()=>{
       setDescriptionLinkButton(true);
     }
   };
+
+
+  const setApplication = ()=>{
+    setCategory("application");
+    setAcceptButton(false);
+  }
+
+  const setResearch = ()=>{
+    setCategory("research");
+    setAcceptButton(false);
+  }
+
+  const setHardware = ()=>{
+    setCategory("hardware");
+    setAcceptButton(false);
+  }
 
 //   useEffect(()=>{
 //     findMax()
@@ -247,10 +267,23 @@ const findnum = async ()=>{
                       <ListGroup.Item style={{ width: "20%" }}>
                         {students.phone_number}
                       </ListGroup.Item>
+                      <ListGroup.Item>
+                      <Dropdown>
+                        <Dropdown.Toggle  id="dropdown-basic"  className="requestbtn">
+                          Dropdown Button
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          <Dropdown.Item onClick={setApplication}>Application</Dropdown.Item>
+                          <Dropdown.Item onClick={setResearch}>Research</Dropdown.Item>
+                          <Dropdown.Item onClick={setHardware}>Hardware</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                      </ListGroup.Item>
                       <ListGroup.Item style={{ width: "10%" }}>
                         <button
                           className="requestbtn"
                           onClick={() => acceptRequest(students.email)}
+                          disabled={acceptButton}
                         >
                           Accept
                         </button>
