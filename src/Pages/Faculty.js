@@ -31,7 +31,7 @@ const Faculty = () => {
   const [descriptionLinkButton, setDescriptionLinkButton] = useState(true);
   const navigate = useNavigate();
   const [setPage, setSetPage] = useState(true);
-  const [category,setCategory] = useState();
+  const [category,setCategory] = useState("select");
   const [acceptButton,setAcceptButton] = useState(true);
 
   const findMax = async ()=>{
@@ -270,7 +270,7 @@ const findnum = async ()=>{
                       <ListGroup.Item>
                       <Dropdown>
                         <Dropdown.Toggle  id="dropdown-basic"  className="requestbtn">
-                          Dropdown Button
+                          {category}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                           <Dropdown.Item onClick={setApplication}>Application</Dropdown.Item>
