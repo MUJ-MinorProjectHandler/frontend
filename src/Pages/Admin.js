@@ -9,6 +9,7 @@ import {
   getFullList,
   rejectAdminStudent,
 } from "../Services/Apis";
+import validator from "validator";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Pagination from "react-bootstrap/Pagination";
@@ -36,6 +37,8 @@ const Admin = () => {
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const navigate = useNavigate();
+  const [descriptionLink, setDescriptionLink] = useState();
+  const [descriptionLinkButton, setDescriptionLinkButton] = useState(true);
 
   const getMax = async () => {
     const response = await findMaximum();
@@ -181,6 +184,28 @@ const Admin = () => {
       ],
     });
     console.log(Data);
+  };
+
+  const validate = (value) => {
+    if (validator.isURL(value)) {
+      setDescriptionLink(value);
+      setDescriptionLinkButton(false);
+    } else {
+      setDescriptionLinkButton(true);
+    }
+  };
+
+  const sendLink = async () => {
+    const data = {
+      description_link: descriptionLink,
+    };
+    const response = await sendDescriptionLink(data);
+    console.log(response.status);
+    if (response.status === 200) {
+      toast.success(response.data.message);
+    } else if (response.status === 400) {
+      toast.error(response.data.message);
+    }
   };
 
   const handlePrevious = () => {
@@ -350,6 +375,36 @@ const Admin = () => {
               {/* <button className="searchbtn">Search</button> */}
             </Form>
           </div>
+        </div>
+        <div className="row" style={{ marginTop: "3rem", marginBottom:"3rem"}}>
+          <div className="col">
+            <Form.Group>
+                  <Form.Label>
+                    Insert a <strong>Public Drive Link</strong> containing the
+                    Project Description
+                  </Form.Label>
+                  <div className="row">
+                    <div className="col-sm-10">
+                      <Form.Control
+                        type="text"
+                        name="project_description"
+                        onChange={(e) => {
+                          validate(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="col-sm-2">
+                      <button
+                        className="upload"
+                        onClick={sendLink}
+                        disabled={descriptionLinkButton}
+                      >
+                        Upload
+                      </button>
+                    </div>
+                  </div>
+              </Form.Group>
+           </div>
         </div>
       </div>
       {/* </section> */}
