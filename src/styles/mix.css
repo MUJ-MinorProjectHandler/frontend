@@ -272,6 +272,11 @@ form .btnload{
     background-color: #91c39e;
 }
 
+.requestbtn:disabled{
+    background-color: #91c39e;
+    cursor:auto;
+}
+
 .declinebtn{
 
     padding: 5px;
