@@ -115,7 +115,7 @@ const Student = () => {
           <HeaderLoginStudent></HeaderLoginStudent>
           <>
             <h3 className="studentheading">
-              ** First have a conversation with respective faculty. Since, student can request only 1 faculty at a time.
+              ** First have a conversation with respective faculty. Since students can request only 1 faculty at a time.
             </h3>
             {/* <h3 className="studentheading">
               Click on the request button who you want to work under
