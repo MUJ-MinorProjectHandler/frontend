@@ -6,6 +6,7 @@ import {
   getFacultyFullInfo,
   generateRequest,
   studentStatus,
+  getLink,
 } from "../Services/Apis";
 import { confirmAlert } from "react-confirm-alert";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -17,6 +18,7 @@ const Student = () => {
   const [stuInfo, setStuInfo] = useState();
   const [facInfo, setFacInfo] = useState();
   const [facFullInfo, setFacFullInfo] = useState();
+  const [link,setLink] = useState();
   const navigate = useNavigate();
   let index=0;
 
@@ -89,10 +91,14 @@ const Student = () => {
     // }
   };
 
+  const getProblemStatements = async () => {
+    const response = await getLink();
+    setLink(response.data);
+  }
 
 
   useEffect(() => {
-
+    getProblemStatements();
     facinfo();
     facfullinfo();
     
@@ -120,6 +126,18 @@ const Student = () => {
             {/* <h3 className="studentheading">
               Click on the request button who you want to work under
             </h3> */}
+            <div className="text-center" style={{ marginBottom:"3rem"}}>
+            <button
+                type="button"
+                class="btn btn-success"
+                className="downsheet"
+                target="_blank"
+                href={link}
+                style={{fontSize:"15px"}}
+              >
+                View Problem Statements
+              </button>
+              </div>
             <div className="container-fluid">
               {facInfo?.map((FACULTY1) => (
                 <ListGroup
